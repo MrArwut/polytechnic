@@ -3,5 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="title_logout">Notifications</string>
+    <string name="title_contact">Contact</string>
+    <string name="hello_home_fragment">Hello Home fragment</string>
+    <string name="hello_contact_fragment">Hello Contact fragment</string>
 </resources>

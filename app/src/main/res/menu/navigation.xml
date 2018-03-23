@@ -17,8 +17,8 @@
     android:title="@string/title_notifications" />
 
     <item
-        android:id="@+id/navigation_logout"
-        android:icon="@drawable/ic_lock_black_24dp"
-        android:title="@string/title_logout" />
+        android:id="@+id/navigation_contact"
+        android:icon="@drawable/ic_copyright_black_24dp"
+        android:title="@string/title_contact" />
 
 </menu>

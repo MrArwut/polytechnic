@@ -1,28 +1,50 @@
 package th.ac.lannapoly.polytech
 
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),HomeFragment.OnFragmentInteractionListener ,ContactFragment.OnFragmentInteractionListener {
+    override fun onFragmentInteraction(uri: Uri) {
+
+    }
+
+    var homeFragment : HomeFragment? = null;
+    var contactFragment : ContactFragment? = null;
+
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                message.setText(R.string.title_home)
+                if(homeFragment== null)
+                    homeFragment = HomeFragment()
+
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.framLayoutMain,homeFragment)
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                message.setText(R.string.title_dashboard)
+
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
+
                 return@OnNavigationItemSelectedListener true
             }
-            R.id.navigation_logout -> {
-                message.setText(R.string.title_notifications)
+            R.id.navigation_contact -> {
+
+                if(contactFragment== null)
+                    contactFragment = ContactFragment()
+                val fragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.replace(R.id.framLayoutMain,contactFragment)
+                fragmentTransaction.addToBackStack(null)
+                fragmentTransaction.commit()
+
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -34,5 +56,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        if(homeFragment== null)
+            homeFragment = HomeFragment()
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.framLayoutMain,homeFragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.commit()
     }
 }
