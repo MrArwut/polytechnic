@@ -21,6 +21,10 @@ class MainActivity : AppCompatActivity() {
                 message.setText(R.string.title_notifications)
                 return@OnNavigationItemSelectedListener true
             }
+            R.id.navigation_logout -> {
+                message.setText(R.string.title_notifications)
+                return@OnNavigationItemSelectedListener true
+            }
         }
         false
     }
