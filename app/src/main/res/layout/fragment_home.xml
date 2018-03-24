@@ -1,13 +1,43 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="th.ac.lannapoly.polytech.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_home_fragment" />
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/editText_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginTop="88dp"
+            android:background="@android:color/holo_blue_dark"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="85dp" />
+
+        <Button
+            android:id="@+id/btSave"
+            android:layout_width="217dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Save"
+            app:layout_constraintTop_toBottomOf="@+id/editText_Name"
+            tools:layout_editor_absoluteX="85dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="215dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="85dp" />
+    </android.support.constraint.ConstraintLayout>
 </FrameLayout>

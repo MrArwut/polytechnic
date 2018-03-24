@@ -7,6 +7,15 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.fragment_home.*
+import com.google.firebase.database.GenericTypeIndicator
+
+
 
 
 /**
@@ -31,13 +40,48 @@ class HomeFragment : Fragment() {
             mParam1 = arguments.getString(ARG_PARAM1)
             mParam2 = arguments.getString(ARG_PARAM2)
         }
+
+
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
+
         return inflater!!.inflate(R.layout.fragment_home, container, false)
     }
+  /*  =================== เพิ่มเข้าไป  ======================= */
+    val database = FirebaseDatabase.getInstance()
+    val myRef = database.getReference("message")
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btSave.setOnClickListener {
+
+
+            myRef.setValue(editText_Name.text.toString())
+            editText_Name.setText("")
+        }
+
+
+        myRef.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot?) {
+                if(p0 != null) {
+                    var message = p0.getValue(String::class.java)
+                    textView.text = message
+                }
+            }
+        })
+
+    }
+
+
+    /*  =================== END เพิ่มเข้าไป  ======================= */
 
     // TODO: Rename method, update argument and hook method into UI event
     fun onButtonPressed(uri: Uri) {

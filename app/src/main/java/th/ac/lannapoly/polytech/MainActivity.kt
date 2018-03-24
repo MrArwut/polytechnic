@@ -70,10 +70,6 @@ class MainActivity : AppCompatActivity(),HomeFragment.OnFragmentInteractionListe
         fragmentTransaction.commit()
 
 
-        // Write a message to the database
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("message")
-        myRef.setValue("Hello, World!")
 
 
     }
