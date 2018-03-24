@@ -14,8 +14,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import com.google.firebase.database.GenericTypeIndicator
-
-
+import th.ac.lannapoly.polytech.model.News
 
 
 /**
@@ -33,6 +32,9 @@ class HomeFragment : Fragment() {
     private var mParam2: String? = null
 
     private var mListener: OnFragmentInteractionListener? = null
+
+    var newses : ArrayList<News> = ArrayList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,18 +54,19 @@ class HomeFragment : Fragment() {
         return inflater!!.inflate(R.layout.fragment_home, container, false)
     }
   /*  =================== เพิ่มเข้าไป  ======================= */
+
     val database = FirebaseDatabase.getInstance()
     val myRef = database.getReference("message")
+
+    val databaseNews = FirebaseDatabase.getInstance()
+    val myRefNews = databaseNews.getReference("news")
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         btSave.setOnClickListener {
-
-
             myRef.setValue(editText_Name.text.toString())
             editText_Name.setText("")
         }
-
 
         myRef.addValueEventListener(object :ValueEventListener{
             override fun onCancelled(p0: DatabaseError?) {
@@ -71,9 +74,31 @@ class HomeFragment : Fragment() {
             }
 
             override fun onDataChange(p0: DataSnapshot?) {
+                newses = ArrayList()
                 if(p0 != null) {
-                    var message = p0.getValue(String::class.java)
+                    var message = p0.getValue<String>(String::class.java)
                     textView.text = message
+                }
+            }
+        })
+
+
+        myRefNews.addValueEventListener(object :ValueEventListener{
+            override fun onCancelled(p0: DatabaseError?) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot?) {
+                newses = ArrayList()
+                if(p0 != null) {
+                    for(newSnap in p0.children) {
+                        val news = newSnap.getValue(News::class.java)
+                        if(news!=null)
+                        {
+                            newses.add(news)
+                        }
+                    }
+
                 }
             }
         })
