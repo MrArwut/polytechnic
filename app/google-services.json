@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "905175359498",
+    "firebase_url": "https://api-project-905175359498.firebaseio.com",
+    "project_id": "api-project-905175359498",
+    "storage_bucket": "api-project-905175359498.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905175359498:android:9793a0b1f72f254a",
+        "android_client_info": {
+          "package_name": "th.ac.lannapoly.polytech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905175359498-m74k476e96d95amcoqb916s5gf4jp3c8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.ac.lannapoly.polytech",
+            "certificate_hash": "c68a83d7c376ac87d36fe5d4437eb5e2bd924cc4"
+          }
+        },
+        {
+          "client_id": "905175359498-7v4ac35p39afudeje3gn1op1mtcvvlhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDatgM5cQ7flcpUEgKl0L7Qtd1Ccxs2yY0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905175359498-7v4ac35p39afudeje3gn1op1mtcvvlhi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
